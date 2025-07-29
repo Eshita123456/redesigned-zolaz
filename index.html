@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zolaz Unique Homes – Luxury Redefined</title>
+
+    <!-- Alpine.js -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+      defer
+    ></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #1e1e1e;
+        color: white;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: 'Playfair Display', serif;
+      }
+
+      .video-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+        padding-bottom: 28.25%; /* Aspect ratio */
+        overflow: hidden;
+        border-radius: 12px;
+      }
+      .video-wrapper iframe {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+      .video-overlay {
+        background: url('https://img.youtube.com/vi/BF81Kovqhy4/maxresdefault.jpg')
+          no-repeat center center/cover;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+      }
+      .play-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 80px;
+        height: 80px;
+        background: url('https://cdn-icons-png.flaticon.com/512/727/727245.png')
+          no-repeat center center/contain;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div
+      x-data="{ activeSlide: 1, slideCount: 3 }"
+      x-init="setInterval(() => { activeSlide = activeSlide < slideCount ? activeSlide + 1 : 1 }, 5000)"
+    >
+      <!-- Header -->
+      <header
+        class="fixed w-full top-0 left-0 z-50 bg-black bg-opacity-80 text-white shadow-md"
+      >
+        <div
+          class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between"
+        >
+          <!-- Logo -->
+          <h1 class="text-2xl font-bold">Zolaz</h1>
+
+          <!-- Desktop Menu -->
+          <nav class="hidden md:flex space-x-6">
+            <a href="#about" class="hover:underline">About</a>
+            <a href="#services" class="hover:underline">Services</a>
+            <a href="#projects" class="hover:underline">Projects</a>
+            <a href="#hotels" class="hover:underline">Hotel Booking</a>
+            <a href="#contact" class="hover:underline">Contact</a>
+          </nav>
+
+          <!-- Text "Menu" Button (Mobile) -->
+          <button
+            id="menu-toggle"
+            class="md:hidden focus:outline-none text-white border px-3 py-1 rounded"
+          >
+            Menu
+          </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div
+          id="mobile-menu"
+          class="hidden md:hidden flex flex-col bg-black bg-opacity-90 text-white px-6 py-4 space-y-4"
+        >
+          <a href="#about" class="hover:underline">About</a>
+          <a href="#services" class="hover:underline">Services</a>
+          <a href="#projects" class="hover:underline">Projects</a>
+          <a href="#hotels" class="hover:underline">Hotel Booking</a>
+          <a href="#contact" class="hover:underline">Contact</a>
+        </div>
+      </header>
+
+      <!-- HERO Section -->
+      <section
+        class="relative w-screen h-screen overflow-hidden pt-16"
+        id="heroSection"
+      >
+        <!-- Slider Images -->
+        <div
+          class="absolute inset-0 flex transition-transform duration-1000 ease-in-out"
+          :style="'transform: translateX(-' + (activeSlide - 1) * 100 + 'vw)'"
+        >
+          <img
+            src="./Images/Website images/roundhillhotelandvillas-gallery-image-10-6776bd7ba7df1.webp"
+            class="w-screen h-screen object-cover flex-shrink-0"
+            alt="Slide 1"
+          />
+          <img
+            src="./Images/Website images/Pool-Villas-at-Vvillas-Phuket.jpg"
+            class="w-screen h-screen object-cover flex-shrink-0"
+            alt="Slide 2"
+          />
+          <img
+            src="./Images/Website images/Corsica_Casa_di_Macine_MAR23_066.jpg"
+            class="w-screen h-screen object-cover flex-shrink-0"
+            alt="Slide 3"
+          />
+        </div>
+
+        <!-- Booking Form Bar -->
+        <div
+          id="heroBookingForm"
+          class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-40 w-[95%] md:w-4/5 bg-white text-black bg-opacity-95 rounded-lg shadow-lg p-4 grid grid-cols-1 md:grid-cols-5 gap-4"
+        >
+          <select
+            id="location"
+            class="w-full p-3 rounded-lg border border-gray-300"
+            required
+          >
+            <option value="">Select Hotel</option>
+            <option value="Goa">Goa</option>
+            <option value="Manali">Manali</option>
+            <option value="Jaipur">Jaipur</option>
+            <option value="Mumbai">Mumbai</option>
+          </select>
+          <input
+            type="date"
+            id="checkIn"
+            class="w-full p-3 rounded-lg border border-gray-300"
+            required
+          />
+          <input
+            type="date"
+            id="checkOut"
+            class="w-full p-3 rounded-lg border border-gray-300"
+            required
+          />
+          <div class="flex gap-2">
+            <input
+              type="number"
+              id="adults"
+              class="w-full p-3 rounded-lg border border-gray-300"
+              placeholder="Adults"
+              min="1"
+              value="1"
+              required
+            />
+            <input
+              type="number"
+              id="children"
+              class="w-full p-3 rounded-lg border border-gray-300"
+              placeholder="Children"
+              min="0"
+              value="0"
+            />
+          </div>
+          <button
+            id="searchBtn"
+            class="bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition w-full"
+          >
+            Check Availability
+          </button>
+        </div>
+      </section>
+
+      <!-- About Section -->
+
+      <section id="about" class="py-20 px-6 md:px-20 bg-white text-black">
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+          <!-- Image Side -->
+          <div>
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+              alt="Luxury Hotel Villa"
+              class="w-full rounded-xl shadow-md"
+            />
+          </div>
+
+          <!-- Text Side -->
+          <div>
+            <h2 class="text-4xl font-serif font-bold mb-4">
+              Welcome to Your Perfect Getaway
+            </h2>
+            <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+              Discover a new level of comfort and luxury at Zolaz Hotels &
+              Villas. Whether you're planning a romantic escape, a family
+              retreat, or a solo adventure, our curated properties offer the
+              finest in hospitality, elegance, and personalized service.
+            </p>
+            <p class="text-lg text-gray-700 leading-relaxed">
+              From breathtaking beachside villas to peaceful mountain retreats,
+              every stay is thoughtfully designed to provide a seamless
+              experience — complete with modern amenities, stunning views, and
+              unmatched serenity. Why settle for ordinary when you can stay
+              extraordinary?
+            </p>
+
+            <a
+              href="#hotels"
+              class="inline-block mt-6 bg-black text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-800 transition"
+            >
+              Explore Villas
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services Section -->
+      <section
+        id="services"
+        class="py-20 px-6 md:px-20 bg-[#F8F8F8] text-black"
+      >
+        <h2 class="text-4xl font-bold text-center mb-12 font-serif">
+          Our Signature Services
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-10">
+          <!-- Service 1 -->
+          <div
+            class="flex flex-col md:flex-row bg-white shadow-lg hover:shadow-2xl transition duration-300 ease-in-out transform hover:scale-105 rounded-xl overflow-hidden"
+          >
+            <img
+              src="./Images/Website images/private villa.webp"
+              alt="Private Villa Stays"
+              class="w-full md:w-1/2 h-64 object-cover"
+            />
+            <div class="p-6 flex flex-col justify-between">
+              <div>
+                <h3 class="text-2xl font-semibold mb-2">Private Villa Stays</h3>
+                <p class="text-gray-700 mb-4">
+                  Enjoy luxurious private villas equipped with pools, jacuzzis,
+                  and curated interiors — perfect for families or romantic
+                  getaways.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 2 -->
+          <div
+            class="flex flex-col md:flex-row bg-white shadow-lg hover:shadow-2xl transition duration-300 ease-in-out transform hover:scale-105 rounded-xl overflow-hidden"
+          >
+            <img
+              src="./Images/Website images/personalize.webp"
+              alt="Personalized Concierge"
+              class="w-full md:w-1/2 h-64 object-cover"
+            />
+            <div class="p-6 flex flex-col justify-between">
+              <div>
+                <h3 class="text-2xl font-semibold mb-2">
+                  Personalized Concierge
+                </h3>
+                <p class="text-gray-700 mb-4">
+                  From airport transfers to local experiences, our 24/7
+                  concierge ensures your journey is smooth and memorable.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 3 -->
+          <div
+            class="flex flex-col md:flex-row bg-white shadow-lg hover:shadow-2xl transition duration-300 ease-in-out transform hover:scale-105 rounded-xl overflow-hidden"
+          >
+            <img
+              src="./Images/Website images/fine dinning.webp"
+              alt="In-Villa Dining"
+              class="w-full md:w-1/2 h-64 object-cover"
+            />
+            <div class="p-6 flex flex-col justify-between">
+              <div>
+                <h3 class="text-2xl font-semibold mb-2">
+                  In-Villa Dining & Spa
+                </h3>
+                <p class="text-gray-700 mb-4">
+                  Enjoy gourmet meals from private chefs and rejuvenating spa
+                  experiences — all from the comfort of your villa.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 4 -->
+          <div
+            class="flex flex-col md:flex-row bg-white shadow-lg hover:shadow-2xl transition duration-300 ease-in-out transform hover:scale-105 rounded-xl overflow-hidden"
+          >
+            <img
+              src="./Images/Website images/download.webp"
+              alt="Local Tours"
+              class="w-full md:w-1/2 h-64 object-cover"
+            />
+            <div class="p-6 flex flex-col justify-between">
+              <div>
+                <h3 class="text-2xl font-semibold mb-2">Guided Local Tours</h3>
+                <p class="text-gray-700 mb-4">
+                  Explore the destination like a local with our expert tour
+                  guides and curated experiences tailored just for you.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why Villas Section -->
+      <section class="py-20 px-6 md:px-20 bg-white text-black">
+        <h2 class="text-4xl font-serif font-bold text-center mb-4">
+          Why Villas
+        </h2>
+        <p class="text-center text-gray-600 mb-12">The Zolaz experience</p>
+
+        <div class="grid md:grid-cols-3 gap-12 text-center">
+          <!-- Feature 1 -->
+          <div
+            class="space-y-4 hover:shadow-lg transition duration-300 rounded-xl p-6"
+          >
+            <i class="fas fa-house text-4xl text-blue-600"></i>
+            <h3 class="font-semibold text-lg">Curated collection</h3>
+            <p class="text-sm text-gray-600">
+              Enjoy a haven of luxury living with our thoughtfully curated villa
+              selection.
+            </p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div
+            class="space-y-4 hover:shadow-lg transition duration-300 rounded-xl p-6"
+          >
+            <i class="fas fa-map-marked-alt text-4xl text-blue-600"></i>
+            <h3 class="font-semibold text-lg">Remarkable locations</h3>
+            <p class="text-sm text-gray-600">
+              Explore the hidden gems of the Caribbean in our stunning
+              locations.
+            </p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div
+            class="space-y-4 hover:shadow-lg transition duration-300 rounded-xl p-6"
+          >
+            <i class="fas fa-user-shield text-4xl text-blue-600"></i>
+            <h3 class="font-semibold text-lg">Confidentiality</h3>
+            <p class="text-sm text-gray-600">
+              Ensure your privacy with the discreet service from our staff.
+            </p>
+          </div>
+
+          <!-- Feature 4 -->
+          <div
+            class="space-y-4 hover:shadow-lg transition duration-300 rounded-xl p-6"
+          >
+            <i class="fas fa-bath text-4xl text-blue-600"></i>
+            <h3 class="font-semibold text-lg">Luxury amenities</h3>
+            <p class="text-sm text-gray-600">
+              Savor the lavish comforts of world-class amenities at your
+              fingertips.
+            </p>
+          </div>
+
+          <!-- Feature 5 -->
+          <div
+            class="space-y-4 hover:shadow-lg transition duration-300 rounded-xl p-6"
+          >
+            <i class="fas fa-route text-4xl text-blue-600"></i>
+            <h3 class="font-semibold text-lg">Trip designers</h3>
+            <p class="text-sm text-gray-600">
+              Immerse yourself in your dream holidays with our expert touch.
+            </p>
+          </div>
+
+          <!-- Feature 6 -->
+          <div
+            class="space-y-4 hover:shadow-lg transition duration-300 rounded-xl p-6"
+          >
+            <i class="fas fa-users text-4xl text-blue-600"></i>
+            <h3 class="font-semibold text-lg">Local expertise</h3>
+            <p class="text-sm text-gray-600">
+              Embark on a journey with seasoned local specialists and insider
+              tips.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="w-full bg-cover bg-center text-white text-center py-24"
+        style="background-image: url('./Banner.webp')"
+      >
+        <div class="px-4">
+          <h2
+            class="text-3xl md:text-5xl font-serif font-semibold mb-4 drop-shadow-lg"
+          >
+            Ready to unwind at your dream hotel?
+          </h2>
+          <p class="text-lg md:text-xl mb-6 drop-shadow">
+            Let us help you book the perfect stay — just one click away.
+          </p>
+          <a
+            href="#"
+            class="inline-block bg-white text-purple-700 font-bold py-3 px-6 rounded shadow-md hover:bg-purple-700 hover:text-white transition duration-300"
+          >
+            Book Your Stay
+          </a>
+        </div>
+      </section>
+
+      <!-- Featured Projects Section -->
+
+      <section id="projects" class="py-20 px-6 md:px-20 bg-white text-black">
+        <h2 class="text-4xl font-bold text-center mb-12 font-serif">
+          Featured Projects
+        </h2>
+        <div class="grid md:grid-cols-3 gap-10">
+          <!-- Project 1 -->
+          <div class="bg-gray-100 p-6 rounded-xl shadow-md">
+            <img
+              src="./Images/Website images/roundhillhotelandvillas-gallery-image-10-6776bd7ba7df1.webp"
+              alt="Project 1"
+              class="w-full h-48 object-cover rounded-lg mb-4"
+            />
+            <h3 class="text-xl font-semibold mb-2">
+              Round Hill Hotel & Villas
+            </h3>
+            <p class="text-gray-600">
+              A luxurious blend of modern elegance and classic Caribbean charm.
+            </p>
+          </div>
+          <!-- Project 2 -->
+          <div class="bg-gray-100 p-6 rounded-xl shadow-md">
+            <img
+              src="./Images/Website images/Pool-Villas-at-Vvillas-Phuket.jpg"
+              alt="Project 2"
+              class="w-full h-48 object-cover rounded-lg mb-4"
+            />
+            <h3 class="text-xl font-semibold mb-2">V Villas Phuket</h3>
+            <p class="text-gray-600">
+              Private pool villas with stunning ocean views and world-class
+              amenities.
+            </p>
+          </div>
+          <!-- Project 3 -->
+          <div class="bg-gray-100 p-6 rounded-xl shadow-md">
+            <img
+              src="./Images/Website images/Corsica_Casa_di_Macine_MAR23_066.jpg"
+              alt="Project 3"
+              class="w-full h-48 object-cover rounded-lg mb-4"
+            />
+            <h3 class="text-xl font-semibold mb-2">Casa di Macine, Corsica</h3>
+            <p class="text-gray-600">
+              A serene retreat surrounded by nature, offering unparalleled
+              tranquility.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Hotel Booking Section -->
+      <section id="hotels" class="py-20 px-6 md:px-20 bg-white text-black">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 font-serif">
+          Deals for the Weekend
+        </h2>
+        <p class="text-center text-gray-600 mb-10">
+          Save on stays for August 1 – August 3
+        </p>
+
+        <div class="grid md:grid-cols-4 gap-8">
+          <!-- Hotel 1 -->
+          <div
+            class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+          >
+            <img
+              src="./Images/Website images/Image1.jpg"
+              alt="Hotel 1"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <span class="bg-blue-600 text-white text-xs px-2 py-1 rounded"
+                >Genius</span
+              >
+              <h3 class="font-bold text-lg mt-2">
+                The Pearl Plaza Hotel in City Centre
+              </h3>
+              <p class="text-sm text-gray-600">New Delhi, India</p>
+              <div class="flex items-center gap-2 mt-2">
+                <span
+                  class="bg-blue-500 text-white text-sm font-semibold px-2 py-1 rounded"
+                  >8.5</span
+                >
+                <span class="text-sm text-gray-600"
+                  >Very Good • 246 reviews</span
+                >
+              </div>
+              <div class="mt-3 text-sm text-gray-700">
+                <p>
+                  <del class="text-red-500">₹11,218</del>
+                  <span class="text-black font-bold">₹5,160</span>
+                </p>
+                <p class="text-xs">2 nights</p>
+              </div>
+              <button
+                onclick="scrollToForm('The Pearl Plaza Hotel in City Centre', '₹5,160')"
+                class="mt-4 w-full bg-blue-600 text-white text-sm font-semibold py-2 rounded hover:bg-blue-700 transition duration-300"
+              >
+                Book Now
+              </button>
+            </div>
+          </div>
+
+          <!-- Hotel 2 -->
+          <div
+            class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+          >
+            <img
+              src="./Images/Website images/image 2.jpg"
+              alt="Hotel 2"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <span class="bg-blue-600 text-white text-xs px-2 py-1 rounded"
+                >Genius</span
+              >
+              <h3 class="font-bold text-lg mt-2">
+                Saltstayz Premier - Golf Course
+              </h3>
+              <p class="text-sm text-gray-600">Gurgaon, India</p>
+              <div class="flex items-center gap-2 mt-2">
+                <span
+                  class="bg-blue-500 text-white text-sm font-semibold px-2 py-1 rounded"
+                  >8.3</span
+                >
+                <span class="text-sm text-gray-600"
+                  >Very Good • 583 reviews</span
+                >
+              </div>
+              <span
+                class="inline-block mt-2 text-xs bg-green-500 text-white px-2 py-1 rounded"
+                >Getaway Deal</span
+              >
+              <div class="mt-2 text-sm text-gray-700">
+                <p>
+                  <del class="text-red-500">₹11,340</del>
+                  <span class="text-black font-bold">₹6,804</span>
+                </p>
+                <p class="text-xs">2 nights</p>
+              </div>
+              <button
+                onclick="scrollToForm('Saltstayz Premier - Golf Course', '₹6,804')"
+                class="mt-4 w-full bg-blue-600 text-white text-sm font-semibold py-2 rounded hover:bg-blue-700 transition duration-300"
+              >
+                Book Now
+              </button>
+            </div>
+          </div>
+
+          <!-- Hotel 3 -->
+          <div
+            class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+          >
+            <img
+              src="./Images/Website images/images 3.jpg"
+              alt="Hotel 3"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <span class="bg-blue-600 text-white text-xs px-2 py-1 rounded"
+                >Genius</span
+              >
+              <h3 class="font-bold text-lg mt-2">
+                Hotel The Daanish Residency - Karol Bagh
+              </h3>
+              <p class="text-sm text-gray-600">New Delhi, India</p>
+              <div class="flex items-center gap-2 mt-2">
+                <span
+                  class="bg-blue-500 text-white text-sm font-semibold px-2 py-1 rounded"
+                  >8.0</span
+                >
+                <span class="text-sm text-gray-600"
+                  >Very Good • 96 reviews</span
+                >
+              </div>
+              <div class="mt-3 text-sm text-gray-700">
+                <p>
+                  <del class="text-red-500">₹8,256</del>
+                  <span class="text-black font-bold">₹4,788</span>
+                </p>
+                <p class="text-xs">2 nights</p>
+              </div>
+              <button
+                onclick="scrollToForm('Hotel The Daanish Residency - Karol Bagh', '₹4,788')"
+                class="mt-4 w-full bg-blue-600 text-white text-sm font-semibold py-2 rounded hover:bg-blue-700 transition duration-300"
+              >
+                Book Now
+              </button>
+            </div>
+          </div>
+
+          <!-- Hotel 4 -->
+          <div
+            class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+          >
+            <img
+              src="./Images/Website images/image 4.jpg"
+              alt="Hotel 4"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <span class="bg-blue-600 text-white text-xs px-2 py-1 rounded"
+                >Genius</span
+              >
+              <h3 class="font-bold text-lg mt-2">
+                Saltstayz Select - Huda City Center
+              </h3>
+              <p class="text-sm text-gray-600">Gurgaon, India</p>
+              <div class="flex items-center gap-2 mt-2">
+                <span
+                  class="bg-blue-500 text-white text-sm font-semibold px-2 py-1 rounded"
+                  >8.3</span
+                >
+                <span class="text-sm text-gray-600"
+                  >Very Good • 687 reviews</span
+                >
+              </div>
+              <span
+                class="inline-block mt-2 text-xs bg-green-500 text-white px-2 py-1 rounded"
+                >Getaway Deal</span
+              >
+              <div class="mt-2 text-sm text-gray-700">
+                <p>
+                  <del class="text-red-500">₹8,370</del>
+                  <span class="text-black font-bold">₹5,022</span>
+                </p>
+                <p class="text-xs">2 nights</p>
+              </div>
+              <button
+                onclick="scrollToForm('Saltstayz Select - Huda City Center', '₹5,022')"
+                class="mt-4 w-full bg-blue-600 text-white text-sm font-semibold py-2 rounded hover:bg-blue-700 transition duration-300"
+              >
+                Book Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Guest Testimonials Section -->
+      <section
+        id="testimonials"
+        class="bg-[#f3f3f3] py-20 px-6 md:px-20 text-black"
+      >
+        <h2 class="text-4xl font-serif font-semibold text-center mb-12">
+          What our guests are saying
+        </h2>
+
+        <div class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          <!-- Testimonial 1 -->
+          <div
+            class="bg-white rounded-xl shadow-md hover:shadow-2xl transition duration-300 p-6 text-center"
+          >
+            <div class="text-purple-700 text-3xl mb-4">❝</div>
+            <p class="text-gray-700 mb-6">
+              We loved every minute of our stay at the designer appointed
+              Arricefe Beach House. The only thing better than the house itself
+              was the wonderful people who took care of us 24/7.
+            </p>
+            <!-- Stars -->
+            <div class="flex justify-center text-yellow-400 mb-3">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-half-alt"></i>
+            </div>
+            <!-- Info -->
+            <h4 class="font-bold text-black">Marine</h4>
+            <p class="text-sm text-gray-500">Las Hamacas</p>
+            <p class="text-sm text-gray-500">2024-12-24</p>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div
+            class="bg-white rounded-xl shadow-md hover:shadow-2xl transition duration-300 p-6 text-center"
+          >
+            <div class="text-purple-700 text-3xl mb-4">❝</div>
+            <p class="text-gray-700 mb-6">
+              The house is incredible and the entire staff were amazing. Walking
+              out onto the golf course and beach was so nice. They planned
+              everything with perfection.
+            </p>
+            <div class="flex justify-center text-yellow-400 mb-3">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+            </div>
+            <h4 class="font-bold text-black">Tom</h4>
+            <p class="text-sm text-gray-500">Goa Beachfront</p>
+            <p class="text-sm text-gray-500">2024-12-24</p>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div
+            class="bg-white rounded-xl shadow-md hover:shadow-2xl transition duration-300 p-6 text-center"
+          >
+            <div class="text-purple-700 text-3xl mb-4">❝</div>
+            <p class="text-gray-700 mb-6">
+              I don’t know where to begin. The villa exceeded our expectations!
+              I cried at goodbye because I was so happy with the experience.
+            </p>
+            <div class="flex justify-center text-yellow-400 mb-3">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+            </div>
+            <h4 class="font-bold text-black">Towanda</h4>
+            <p class="text-sm text-gray-500">Palm Paradise</p>
+            <p class="text-sm text-gray-500">2024-12-24</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Join Our Collection Section -->
+      <section class="py-20 px-6 md:px-20 bg-white text-black">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <!-- Image Slider or Static Image -->
+          <div class="relative">
+            <img
+              src="./Images/Website images/OIP.jpg"
+              alt="Partner Villa"
+              class="rounded-xl shadow-lg object-cover w-full"
+            />
+          </div>
+
+          <!-- Content -->
+          <div>
+            <h2 class="text-4xl font-serif font-semibold mb-4">
+              Join Our Collection
+            </h2>
+            <p class="text-gray-600 mb-6">
+              Become a part of our luxury villa collection and enjoy expert
+              management, seamless bookings, and trusted guest experiences.
+            </p>
+
+            <!-- Features -->
+            <div class="grid grid-cols-2 gap-4 mb-6">
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-user-check text-purple-700 text-lg"></i>
+                <span class="font-medium">Handpicked Luxury Homes</span>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-spa text-purple-700 text-lg"></i>
+                <span class="font-medium">Verified for Quality</span>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-chart-line text-purple-700 text-lg"></i>
+                <span class="font-medium">Secure and Private</span>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-medal text-purple-700 text-lg"></i>
+                <span class="font-medium">Prime Locations</span>
+              </div>
+            </div>
+
+            <!-- Call to Action -->
+            <a
+              href="#contact"
+              class="inline-block bg-purple-700 text-white px-6 py-3 rounded-md shadow hover:bg-purple-800 transition"
+            >
+              Apply Now
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Responsive YouTube Embed -->
+      <div class="video-wrapper" id="customVideo">
+        <div class="video-overlay" onclick="loadVideo()">
+          <div class="play-button"></div>
+        </div>
+      </div>
+
+      <!--contact page-->
+
+      <section id="contact" class="py-20 px-6 md:px-20 bg-[#F8F8F8] text-black">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 font-serif">
+          Get in Touch
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          <!-- Left: Contact Form -->
+          <form id="contactForm" class="space-y-4">
+            <div>
+              <label for="name" class="block text-sm font-medium mb-1"
+                >Name</label
+              >
+              <input
+                type="text"
+                id="name"
+                class="w-full p-3 border border-gray-300 rounded"
+                required
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium mb-1"
+                >Email</label
+              >
+              <input
+                type="email"
+                id="email"
+                class="w-full p-3 border border-gray-300 rounded"
+                required
+              />
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-medium mb-1"
+                >Message</label
+              >
+              <textarea
+                id="message"
+                rows="4"
+                class="w-full p-3 border border-gray-300 rounded"
+                required
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              class="w-full bg-black text-white py-3 rounded hover:bg-gray-800 transition"
+            >
+              Send Message
+            </button>
+          </form>
+
+          <!-- Right: Contact Info -->
+          <div class="space-y-6 text-sm md:text-base">
+            <h3 class="text-2xl font-semibold font-serif mb-4">
+              Contact Details
+            </h3>
+            <p><strong>Phone:</strong> +91 98765 43210</p>
+            <p><strong>Email:</strong> contact@zolazhomes.com</p>
+            <p>
+              <strong>Address:</strong> Zolaz Unique Homes, MG Road, New Delhi,
+              India
+            </p>
+
+            <div class="pt-6">
+              <h4 class="text-xl font-semibold font-serif mb-2">Thank You!</h4>
+              <p>
+                We appreciate your interest in Zolaz Unique Homes. Our team will
+                get back to you shortly. Meanwhile, feel free to explore our
+                luxury villas and services.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+
+      <footer class="bg-[#fef6ee] text-gray-700 py-12">
+        <div
+          class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-5 gap-10"
+        >
+          <!-- Branding -->
+          <div class="space-y-4">
+            <div class="text-4xl font-bold">Zolaz</div>
+            <p class="text-sm leading-relaxed">
+              At Zolaz, we believe in providing more than just a fantastic
+              villa. With a keen attention to detail, integrity, commitment, and
+              teamwork, we ensure every interaction is rewarding and every stay
+              memorable.
+            </p>
+
+            <p class="text-xs text-gray-500 mt-4">
+              &copy; 2025 Zolaz. All Rights Reserved.
+            </p>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h4 class="font-semibold mb-3">Quick Links</h4>
+            <ul class="space-y-2 text-sm">
+              <li>
+                <a href="#" class="hover:text-purple-600">Villa Collection</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-purple-600">Destinations</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-purple-600"
+                  >Join our collection</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-purple-600"
+                  >Property management</a
+                >
+              </li>
+              <li><a href="#" class="hover:text-purple-600">Golf</a></li>
+              <li><a href="#" class="hover:text-purple-600">Guides</a></li>
+              <li>
+                <a href="#" class="hover:text-purple-600">Request service</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Destinations -->
+          <div>
+            <h4 class="font-semibold mb-3">Destinations</h4>
+            <ul class="space-y-2 text-sm">
+              <li>
+                <a href="#" class="hover:text-purple-600">Dominican Republic</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-purple-600">United States</a>
+              </li>
+              <li><a href="#" class="hover:text-purple-600">Barbados</a></li>
+              <li><a href="#" class="hover:text-purple-600">St. Barths</a></li>
+            </ul>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="md:col-span-2">
+            <h4 class="font-semibold mb-3">Subscribe to Our Newsletter</h4>
+            <p class="text-sm mb-4">
+              You'll receive insider villa updates and travel inspiration.
+            </p>
+            <form class="flex w-full max-w-md">
+              <input
+                type="email"
+                placeholder="Email address*"
+                class="w-full p-3 rounded-l-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-purple-500"
+                required
+              />
+              <button
+                type="submit"
+                class="bg-purple-700 text-white px-4 rounded-r-md hover:bg-purple-800"
+              >
+                <i class="fas fa-arrow-right"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Contact & Social Section -->
+        <div
+          class="mt-12 border-t border-gray-200 pt-8 px-6 md:px-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-6"
+        >
+          <!-- Contact Info -->
+          <div class="space-y-2 text-sm">
+            <h4 class="font-semibold">Contact Us</h4>
+            <p>
+              <i class="fas fa-envelope mr-2 text-purple-600"></i
+              ><a href="mailto:hello@zolaz.com" class="hover:underline"
+                >hello@zolaz.com</a
+              >
+            </p>
+            <p>
+              <i class="fab fa-whatsapp mr-2 text-green-500"></i>
+              +1-809-795-0054
+            </p>
+            <p>
+              <i class="fas fa-phone mr-2 text-purple-600"></i> +1-305-741-9983
+            </p>
+          </div>
+
+          <!-- Footer Links -->
+          <div class="flex gap-6 text-sm">
+            <a href="#" class="hover:text-purple-600">Careers</a>
+            <a href="#" class="hover:text-purple-600">Sustainability</a>
+            <a href="#" class="hover:text-purple-600">Privacy Policy</a>
+            <a href="#" class="hover:text-purple-600">Terms</a>
+          </div>
+
+          <!-- Social Icons -->
+          <div class="flex space-x-4 text-xl">
+            <a href="#" class="text-gray-600 hover:text-purple-700"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+            <a href="#" class="text-gray-600 hover:text-purple-700"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="#" class="text-gray-600 hover:text-purple-700"
+              ><i class="fab fa-youtube"></i
+            ></a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      // Mobile Menu Toggle
+
+      const toggleBtn = document.getElementById('menu-toggle')
+      const mobileMenu = document.getElementById('mobile-menu')
+
+      toggleBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden')
+      })
+      // Simple JS Slider Logic
+      const slides = document.querySelectorAll('.slider-image')
+      let index = 0
+
+      setInterval(() => {
+        slides.forEach((img, i) => {
+          img.classList.remove('opacity-100')
+          img.classList.add('opacity-0')
+        })
+        index = (index + 1) % slides.length
+        slides[index].classList.remove('opacity-0')
+        slides[index].classList.add('opacity-100')
+      }, 5000)
+
+      function saveBookingData() {
+        const data = {
+          location: document.getElementById('location').value,
+          checkIn: document.getElementById('checkIn').value,
+          checkOut: document.getElementById('checkOut').value,
+          adults: document.getElementById('adults').value,
+          children: document.getElementById('children').value
+        }
+        localStorage.setItem('bookingData', JSON.stringify(data))
+      }
+
+      // When 'Check Availability' clicked
+      document.getElementById('searchBtn').addEventListener('click', () => {
+        saveBookingData()
+        alert('We will check availability!')
+      })
+
+      // When 'Book Now' clicked
+      document.getElementById('bookNowBtn').addEventListener('click', () => {
+        document
+          .getElementById('bookingSection')
+          .scrollIntoView({ behavior: 'smooth' })
+      })
+
+      //Scroll Script
+
+      function scrollToForm(hotelName, price) {
+        const section = document.getElementById('heroBookingForm')
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth' })
+          // Optional: Store selected hotel for form prefill
+          localStorage.setItem(
+            'selectedHotel',
+            JSON.stringify({ hotelName, price })
+          )
+        }
+      }
+
+      function loadVideo() {
+        const wrapper = document.getElementById('customVideo')
+        wrapper.innerHTML = `
+      <iframe
+        src="https://www.youtube.com/embed/BF81Kovqhy4?autoplay=1&controls=1&rel=0&modestbranding=1&showinfo=0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+      ></iframe>`
+      }
+    </script>
+  </body>
+</html>
